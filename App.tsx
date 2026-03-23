@@ -10,7 +10,7 @@ export default function App() {
     { name: "Dragonite", price: 150.0, category: "Dragon", onSale: false },
     { name: "Gyarados", price: 100.0, category: "Water", onSale: false },
     { name: "MewTwo", price: 1000000.0, category: "Psychic", onSale: true },
-    { name: "Ratatta", price: 0.5, category: "Mouse", onSale: true },
+    { name: "Rattata", price: 0.5, category: "Mouse", onSale: true },
   ];
 
   return (
@@ -21,11 +21,11 @@ export default function App() {
       </Text>
 
       {dataList.map((pokemon, index) => (
-        <View key={index}>
-          <Text style={styles.pokemonCard}>{pokemon.name}</Text>
+        <View key={index} style={styles.pokemonCard}>
+          <Text>{pokemon.name}</Text>
           <Text>{pokemon.category}</Text>
-          <Text>{pokemon.price}</Text>
-          <Text>{pokemon.onSale && <Text>Available</Text>}</Text>
+          <Text>${pokemon.price}</Text>
+          {pokemon.onSale && <Text style={styles.available}>Available</Text>}
         </View>
       ))}
       <StatusBar style="auto" />
@@ -43,10 +43,12 @@ const styles = StyleSheet.create({
   },
   pokemonCard: {
     padding: 15,
+    width: '100%',
     backgroundColor: "#f9f9f9",
     borderRadius: 8,
     marginBottom: 10,
     borderLeftWidth: 4,
+    borderLeftColor: "orange"
   },
   title: {
     fontSize: 25,
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "600",
   },
-  fire: {
-    color: "orange",
-  },
+  available: {
+    color: "green"
+  }
 });
